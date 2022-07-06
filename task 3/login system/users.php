@@ -1,0 +1,27 @@
+<?php
+$users = [
+    [
+        'id'=>1,
+        'name'=>'esraa',
+        'email'=>'esraa@gmail.com',
+        'password'=>123456,
+        'gender'=>'f',
+        'image'=>'3.png'
+    ],
+    [
+        'id'=>2,
+        'name'=>'merna',
+        'email'=>'merna@gmail.com',
+        'password'=>123456,
+        'gender'=>'f',
+        'image'=>'2.png'
+    ],
+    [
+        'id'=>2,
+        'name'=>'ahmed',
+        'email'=>'ahmed@gmail.com',
+        'password'=>123456,
+        'gender'=>'m',
+        'image'=>'1.jpg'
+    ]
+];
