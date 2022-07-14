@@ -1,3 +1,32 @@
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (!empty($_POST['name']) && !empty($_POST['loan']) && !empty($_POST['years']) && $_POST['loan'] > 0 && $_POST['years'] > 0) {
+
+        function calculate(float $rate): array
+        {
+            $investRate = $_POST['loan'] * $rate * $_POST['years'];
+            $totalLoan = $_POST['loan'] + $investRate;
+            $monInstall = round($totalLoan / ($_POST['years'] * 12), 2);
+            return ['investRate' => $investRate, 'totalLoan' => $totalLoan, 'monInstall' => $monInstall];
+        }
+
+        if ($_POST['years'] <= 3) {
+            $interestRate = .1;
+            $result = calculate($interestRate);
+        } elseif ($_POST['years'] <= 30 && $_POST['years'] > 3) {
+            $interestRate = .15;
+            $result = calculate($interestRate);
+        } else {
+            $error = "<div class='alert alert-danger text-center'>Maximum 30 years for a loan</div>";
+        }
+        // print_r(count($result));
+    } else {
+        $error = "<div class='alert alert-danger text-center'>Please Fill Out All Inputs</div>";
+    }
+}
+
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -19,6 +48,7 @@
                 <img src="giphy.gif" class="img-fluid rounded-circle" alt="calculator image">
             </div>
             <div class="col-6">
+                <?= $error ?? "" ?>
                 <form action="" method="post" class="w-75">
                     <div class="mb-3">
                         <label for="name" class="form-label">UserName</label>
@@ -34,24 +64,29 @@
                     </div>
                     <button type="submit" class="btn btn-primary">Calculate</button>
                 </form>
-                <table class="table table-bordered table-striped mt-5 text-center">
-                    <thead>
-                        <tr>
-                            <th scope="col">User Name</th>
-                            <th scope="col">Interest Rate</th>
-                            <th scope="col">Loan After Interest</th>
-                            <th scope="col">Monthly Installment</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><?=$_POST['name']?></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    </tbody>
-                </table>
+                <?php if (isset($result)) { ?>
+
+                    <table class="table table-bordered table-striped mt-5 text-center">
+                        <thead>
+                            <tr>
+                                <th scope="col">User Name</th>
+                                <th scope="col">Interest Rate</th>
+                                <th scope="col">Invest Rate</th>
+                                <th scope="col">Loan After Interest</th>
+                                <th scope="col">Monthly Installment</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><?= $_POST['name'] ?></td>
+                                <td><?= $interestRate ?></td>
+                                <td><?= $result['investRate'] ?></td>
+                                <td><?= $result['totalLoan'] ?></td>
+                                <td><?= $result['monInstall'] ?></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                <?php } ?>
             </div>
         </div>
     </div>
