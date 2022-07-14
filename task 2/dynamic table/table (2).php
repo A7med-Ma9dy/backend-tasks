@@ -69,7 +69,7 @@ $users = [
 <html lang="en">
 
 <head>
-    <title>Table</title>
+    <title>Table2</title>
 
     <!-- Required meta tags -->
     <meta charset="utf-8">

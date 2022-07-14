@@ -1,3 +1,4 @@
+<!-- 1)	Get 3 numbers from user and calculate max and mini (if conditions)  -->
 <?php
 if($_GET){
     $num1 = $_GET['first'];

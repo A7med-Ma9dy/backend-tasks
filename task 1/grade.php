@@ -1,3 +1,14 @@
+5)	Write a PHP program to input marks of five subjects Physics, Chemistry, Biology, Mathematics and Computer. Calculate percentage and grade Per Year according to following: grade.php
+NOTE:: max grade : 100
+
+Percentage >= 90%: Grade A
+Percentage >= 80%: Grade B
+Percentage >= 70%: Grade C
+Percentage >= 60%: Grade D
+Percentage >= 40%: Grade E
+Percentage < 40%: Grade F
+o/p => (490/500)*100=> percentage : 98% => A
+
 <?php
 if($_GET){
     define('max_grade', 100);

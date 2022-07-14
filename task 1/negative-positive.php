@@ -1,3 +1,4 @@
+<!-- 2)	Get a number from user and check if the number negative or positive  -->
 <?php
 if (isset($_GET['submit'])) {
     if(isset($_GET['num'])){

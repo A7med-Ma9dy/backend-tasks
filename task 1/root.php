@@ -1,3 +1,4 @@
+<!-- Calculate specific root of any number (without if conditions)  -->
 <?php
 if(isset($_GET['submit'])){
         if ($_GET['power']) {

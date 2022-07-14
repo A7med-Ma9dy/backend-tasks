@@ -1,3 +1,10 @@
+<!-- 6)	Write a PHP program to input electricity unit charges and calculate total electricity bill according to the given condition:
+For first 50 units. 0.50/unit
+For next 100 units. 0.75/unit
+For next 100 units. 1.20/unit
+For unit above 250. 1.50/unit
+An additional surcharge of 20% is added to the bill elec.php -->
+
 <?php
 if($_POST){
     define('add_charge', 0.2);
@@ -55,3 +62,52 @@ if($_POST){
 </body>
 
 </html>
+
+<!-- The electricity company wants to know to which group the citizens belong, based on their consumption and how much money they should pay at the end of the month.
+
+Because of that the electricity company decided to reach out to you and asked you to write a program that finds which group a specific citizen belongs to.
+
+Here are some information that will help you to decide which group a citizen belongs to:
+
+Citizens groups
+Group 1: 1 to 300 Kilowatt/hour, cost = 0.5$ for each Kilo.
+Group 2: 300 to 600 Kilowatt/hour, cost = 1$ for each Kilo.
+Group 3: more than 600 Kilowatt/hour, cost = 2$ for each Kilo.
+To calculate the cost in one month:
+Use a variable called electricityConsumption.
+In the variable add a value you want your program to check (this value in this variable is how much Kilowatts have been consumed in a single month).
+At the end print to which group the citizen belongs to and how much his/her consumption cost. -->
+
+<!-- <html>
+  <head>
+    <title>PHP Test</title>
+  </head>
+  <body>
+    <?php 
+      // Write your code here
+      
+    //   $electricityConsumption = 1000;
+    //   $category = $electricityConsumption / (24*30);
+      
+      //check conditions and print their group and consumption cost.
+    //   if ( $category >=1 && $category <= 300){
+
+    //    echo "Group 1: 1 to 300 Kilowatt/hour, cost = " . $electricityConsumption * 0.5 . "$.";
+
+    //   } elseif ( $category > 300 && $category <= 600){
+
+    //     echo "Group 2: 300 to 600 Kilowatt/hour, cost = " . $electricityConsumption . "$.";
+
+    //   } elseif( $category > 600 ){
+
+    //     echo "Group 3: more than 600 Kilowatt/hour, cost = " . $electricityConsumption * 2 . "$.";
+
+    //   }else{
+
+    //     echo "Invalid"; // print invalid if all conditions failed.
+
+    //   }
+      
+     ?> 
+  </body>
+</html> -->

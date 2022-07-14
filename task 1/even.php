@@ -1,3 +1,4 @@
+<!-- Get 1 number from user and check if the number even or odd -->
 <?php
 
     if ($_GET) {
