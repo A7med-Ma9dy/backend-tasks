@@ -85,7 +85,7 @@ function disc($total)
             <select class="form-control" name="city">
               <option value="Cairo" <?= (isset($_POST['city']) && $_POST['city'] == 'Cairo') ? 'selected' : "" ?>>Cairo</option>
               <option value="Giza" <?= (isset($_POST['city']) && $_POST['city'] == 'Giza') ? 'selected' : "" ?>>Giza</option>
-              <option value="Alex" <?= (isset($_POST['city']) && $_POST['city'] == '"Alex') ? 'selected' : "" ?>>Alex</option>
+              <option value="Alex" <?= (isset($_POST['city']) && $_POST['city'] == 'Alex') ? 'selected' : "" ?>>Alex</option>
               <option value="Other" <?= (isset($_POST['city']) && $_POST['city'] == 'Other') ? 'selected' : "" ?>>Other</option>
             </select>
           </div>
