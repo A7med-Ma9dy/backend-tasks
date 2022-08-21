@@ -1,0 +1,70 @@
+<html>
+
+<head>
+    <title>Basic validation</title>
+</head>
+<script>
+    function status() {
+        var age = prompt("Enter Your age")
+        if (age) {
+            if (age > 0) {
+                if (age < 11) {
+                    alert("child")
+                }
+                else if (age >= 11 && age < 19) {
+                    alert("Teenager")
+                }
+                else if (age >= 19 && age < 51) {
+                    alert("Grown up")
+                }
+                else if (age >= 51) {
+                    alert("Old")
+                }
+            } else {
+                alert("Invalid age")
+            }
+        }else{
+            return status()
+        }
+    }
+// status()
+
+function countVowels(){
+    let vowel = 'aeiou'
+    let str = prompt('Enter a string: ').toLowerCase();
+    let count = 0;
+    let len = str.length
+    let vlen = vowel.length
+    for(let i = 0; i < len; i++){
+        for(let j = 0; j < vlen; j++){
+            if(str[i] == vowel[j]){
+                count++;
+                break;
+            }
+        }
+    }
+    return(count);
+}
+
+function conv_time(){
+    let time = prompt('Enter time to convert: ');
+    if(time>=0 && time<=24){
+        let state='AM'
+        if(time>=12)state='PM';
+        time = time % 12;
+        alert(time +' '+ state)
+    }
+
+    }
+
+
+// status()
+// console.log(countVowels())
+// conv_time()
+
+
+
+
+</script>
+
+</html>

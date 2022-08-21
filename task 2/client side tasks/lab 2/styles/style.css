@@ -1,0 +1,120 @@
+.container {
+    margin: 10px;
+}
+
+nav {
+    background-color: black;
+}
+
+ul {
+    list-style-type: none;
+    overflow: hidden;
+}
+
+li a {
+    display: block;
+    float: left;
+    text-decoration: none;
+    text-align: center;
+    color: white;
+    padding: 25px;
+    font-weight: bold;
+}
+
+li a:hover {
+    background-color: yellowgreen;
+}
+
+li img {
+    width: 110px;
+    height: auto;
+    float: right;
+    padding-top: 1px;
+    padding-right: 1px;
+}
+
+footer {
+    padding: 30px;
+    font-weight: bold;
+}
+
+/* div {
+    border: 1px solid black;
+    overflow: hidden;
+} */
+
+#left {
+    display: inline-block;
+    width: 50%;
+    /* float: left; */
+}
+
+#right {
+    display: inline-block;
+    width: 49%;
+    /* float: right; */
+}
+
+form {
+    background-color: #f5faf9;
+    border: 3px solid #e0f0e8;
+    display: table;
+    margin: auto;
+    padding: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 13px;
+}
+table h3{
+    color: #5f9882;
+}
+tr{
+    padding: 50px;
+}
+th{
+    background-color: #e0f0e8;
+    text-align: right;
+    font-weight:normal;
+    color: #5f9882;
+    margin: 10px;
+}
+td{
+    padding: 5px;
+    
+}
+form p{
+    border: thin dashed #5f9882;
+    padding: 10px;
+    background-color: #e0f0e8;
+}
+
+span{
+    color: red;
+}
+
+
+#checkbox{
+    color: #5f9882;
+    text-align: center;
+}
+ #button{
+    text-align: center;
+}
+
+td input{
+    border: 1px solid #5f9882;
+}
+td textarea{
+    border: 1px solid #5f9882;
+}
+.bord input{
+    width: 360px;
+}
+#one{
+width: 80px;
+}
+#two{
+    width: 70px;
+ }
+#three{
+    width: 150px;
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function greeting() {
+            const first = prompt("Enter Your First Name: ");
+            const last = prompt("Enter Your Last Name: ");
+            if (first && last) {
+                const year = prompt("Enter Your Birth Year: ");
+                const currentYear = 2022;
+                var age = currentYear - year;
+                alert("Welcome " + first.toUpperCase() + " " + last.toUpperCase() + "." + "\n" + "Your Age is " + age);
+                return;
+            } else {
+                alert('Invalid Name');
+                return greeting();
+            }
+        }
+        
+        function calc() {
+            alert("It’s the first release of a calculator that only has a summation feature.")
+            const first = prompt("Enter Your First Number: ");
+            const last = prompt("Enter Your Second Number: ");
+            if (first && last) {
+                var sum = parseInt(first) + parseInt(last);
+                alert("Sum of " + first + " + " + last + " = " + sum);
+
+            } else {
+                alert('Invalid Numbers');
+                return calc();
+            }
+        }
+        greeting();
+        calc();
+    </script>
+</body>
+
+</html>
