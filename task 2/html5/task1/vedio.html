@@ -59,6 +59,11 @@
         const timerBar = document.querySelector('.timer div');
 
         playpause.addEventListener('click', (e) => {
+            rwd.classList.remove('active');
+            fwd.classList.remove('active');
+            clearInterval(intervalRwd);
+            clearInterval(intervalFwd);
+
             if (video.paused || video.ended) {
                 video.play();
             } else {
@@ -68,6 +73,11 @@
         stop.addEventListener('click', stopMedia);
         video.addEventListener('ended', stopMedia);
         function stopMedia() {
+            rwd.classList.remove('active');
+            fwd.classList.remove('active');
+            clearInterval(intervalRwd);
+            clearInterval(intervalFwd);
+
             video.pause();
             video.currentTime = 0;
         }
