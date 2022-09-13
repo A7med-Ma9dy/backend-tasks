@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>video</title>
+    <style>
+        li {
+            display: inline;
+        }
+    </style>
+</head>
+
+<body>
+    <figure id="videoContainer">
+        <video id="video" preload="metadata" poster="img/poster.jpg">
+            <source src="file:///C:/Users/HMEGO/Desktop/New%20folder/noneedtobeupset.mp4" type="video/mp4">
+        </video>
+    </figure>
+    <div style="display:inline;">
+        <ul id="video-controls" class="controls" style="list-style:none">
+            <li><button id="playpause" type="button">Play/Pause</button></li>
+            <li><button id="stop" type="button">Stop</button></li>
+            <li><button id="rwd" aria-label="rewind"><<</button></li>
+            <li><button id="fwd" aria-label="fast forward">>></button></li>
+            <li><button id="mute" type="button">Mute/Unmute</button></li>
+            <li><button id="volinc" type="button">Vol+</button></li>
+            <li><button id="voldec" type="button">Vol-</button></li>
+            <li>
+                <div class="timer">
+                    <div></div>
+                    <span aria-label="timer">00:00</span>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        const video = document.getElementById('video');
+        // Hide the default controls
+        // video.controls = false;
+        // Display the user defined video controls
+        // videoControls.style.display = 'block';
+        // video.removeAttribute('controls');
+        // controls.style.visibility = 'visible';
+
+
+        const playpause = document.getElementById('playpause');
+        const stop = document.getElementById('stop');
+        const mute = document.getElementById('mute');
+        const volinc = document.getElementById('volinc');
+        const voldec = document.getElementById('voldec');
+        const rwd = document.getElementById('rwd');
+        const fwd = document.getElementById('fwd');
+        const timerWrapper = document.querySelector('.timer');
+        const timer = document.querySelector('.timer span');
+        const timerBar = document.querySelector('.timer div');
+
+        playpause.addEventListener('click', (e) => {
+            if (video.paused || video.ended) {
+                video.play();
+            } else {
+                video.pause();
+            }
+        });
+        stop.addEventListener('click', stopMedia);
+        video.addEventListener('ended', stopMedia);
+        function stopMedia() {
+            video.pause();
+            video.currentTime = 0;
+        }
+
+        mute.addEventListener('click', (e) => {
+            video.muted = !video.muted;
+        });
+        volinc.addEventListener('click', (e) => {
+            alterVolume('+');
+        });
+        voldec.addEventListener('click', (e) => {
+            alterVolume('-');
+        });
+        function alterVolume(dir) {
+            const currentVolume = Math.floor(video.volume * 10) / 10;
+            if (dir === '+' && currentVolume < 1) {
+                video.volume += 0.1;
+            } else if (dir === '-' && currentVolume > 0) {
+                video.volume -= 0.1;
+            }
+        }
+
+        rwd.addEventListener('click', mediaBackward);
+        fwd.addEventListener('click', mediaForward);
+
+        let intervalFwd;
+        let intervalRwd;
+
+        function mediaBackward() {
+            clearInterval(intervalFwd);
+            fwd.classList.remove('active');
+
+            if (rwd.classList.contains('active')) {
+                rwd.classList.remove('active');
+                clearInterval(intervalRwd);
+                video.play();
+            } else {
+                rwd.classList.add('active');
+                video.pause();
+                intervalRwd = setInterval(windBackward, 200);
+            }
+        }
+
+        function mediaForward() {
+            clearInterval(intervalRwd);
+            rwd.classList.remove('active');
+
+            if (fwd.classList.contains('active')) {
+                fwd.classList.remove('active');
+                clearInterval(intervalFwd);
+                video.play();
+            } else {
+                fwd.classList.add('active');
+                video.pause();
+                intervalFwd = setInterval(windForward, 200);
+            }
+        }
+        function windBackward() {
+            if (video.currentTime <= 3) {
+                rwd.classList.remove('active');
+                clearInterval(intervalRwd);
+                stopMedia();
+            } else {
+                video.currentTime -= 3;
+            }
+        }
+
+        function windForward() {
+            if (video.currentTime >= video.duration - 3) {
+                fwd.classList.remove('active');
+                clearInterval(intervalFwd);
+                stopMedia();
+            } else {
+                video.currentTime += 3;
+            }
+        }
+        video.addEventListener('timeupdate', setTime);
+
+        function setTime() {
+            const minutes = Math.floor(video.currentTime / 60);
+            const seconds = Math.floor(video.currentTime - minutes * 60);
+
+            const minuteValue = minutes.toString().padStart(2, '0');
+            const secondValue = seconds.toString().padStart(2, '0');
+
+            const mediaTime = `${minuteValue}:${secondValue}`;
+            timer.textContent = mediaTime;
+
+            const barLength = timerWrapper.clientWidth * (video.currentTime / video.duration);
+            timerBar.style.width = `${barLength}px`;
+        }
+
+    </script>
+</body>
+
+</html>
